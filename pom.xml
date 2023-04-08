@@ -76,6 +76,17 @@
             <version>3.23.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+             <groupId>net.serenity-bdd</groupId>
+             <artifactId>serenity-single-page-report</artifactId>
+             <version>${serenity.version}</version>
+             </dependency>
+             <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+    		<groupId>org.seleniumhq.selenium</groupId>
+    		<artifactId>selenium-java</artifactId>
+   			<version>4.8.0</version>
+	</dependency>
     </dependencies>
     <build>
         <plugins>
@@ -96,6 +107,8 @@
                         <include>**/Test*.java</include>
                         <include>**/*TestSuite.java</include>
                         <include>**/When*.java</include>
+                        <include>**/**.java</include>
+                        <include>**/*Page.java</include>
                     </includes>
                     <systemPropertyVariables>
                         <webdriver.base.url>${webdriver.base.url}</webdriver.base.url>
