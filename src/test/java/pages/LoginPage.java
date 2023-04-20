@@ -13,6 +13,25 @@ import utils.ReportLog;
 
 public class LoginPage extends PageObject{
 	
+	private String email1;
+	private String password1;
+	
+	public String getPassword1() {
+		return password1;
+	}
+
+	public void setPassword1(String password1) {
+		this.password1 = password1;
+	}
+	
+	public String getEmail1() {
+		return email1;
+	}
+
+	public void setEmail1(String email1) {
+		this.email1 = email1;
+	}
+
 	@Steps
 	ReportLog report;
 		
@@ -40,6 +59,13 @@ public class LoginPage extends PageObject{
 	
 	public void EnterUsername(String emailAddress) {
 		email.sendKeys(emailAddress);
+		waitABit(1000);
+		report.LOG("Email address is entered");
+	}
+	
+	public void EnterUsername1() {
+		email.sendKeys(getEmail1());
+		System.out.println(getEmail1());
 		waitABit(1000);
 		report.LOG("Email address is entered");
 	}

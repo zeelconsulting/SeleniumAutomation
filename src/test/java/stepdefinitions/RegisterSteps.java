@@ -55,8 +55,9 @@ public class RegisterSteps extends PageObject {
 	}
 	@Then("User creates an account by providing enter {string} and {string}")
 	public void user_creates_an_account_by_providing_enter_and(String email, String password) {
-
-		login.EnterUsername(email);
+		
+		login.setEmail1(email);
+		login.EnterUsername1();
 		register.Registerpassword(password);
 		register.ConfirmPassword(password);
 		

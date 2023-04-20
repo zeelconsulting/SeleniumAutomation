@@ -8,7 +8,6 @@ import org.openqa.selenium.Keys;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import utils.ReportLog;
 
@@ -87,36 +86,36 @@ public class HomePage extends PageObject{
 
 	public void openApplication() {
 
-//		open();
-//		//	driver.get("https://www.loblaws.ca/");
-//		//	System.out.println(driver.getCurrentUrl());
-//		waitABit(2000);
-//		getDriver().manage().window().maximize();
-//		report.LOG("User launches Loblaws url");
-//		waitABit(4000);
-//		if (clearCookiesPopUp.isCurrentlyVisible()) {
-//			clearCookies();	
-//			waitABit(2000);
-//		}
-//		
-//		if (signUpPopUp.isCurrentlyVisible()) {
-//			clearSignUpPopUp();	
-//			waitABit(2000);
-//		}
-//		
-//		System.out.println(getDriver().getCurrentUrl());
-//		System.out.println(getDriver().getTitle());
-		
-		
-			getDriver().get("https://www.longos.com/");
+	open();
+		//	driver.get("https://www.loblaws.ca/");
+		//	System.out.println(driver.getCurrentUrl());
+		waitABit(2000);
+		getDriver().manage().window().maximize();
+		report.LOG("User launches Loblaws url");
+		waitABit(4000);
+		if (clearCookiesPopUp.isCurrentlyVisible()) {
+			clearCookies();	
 			waitABit(2000);
-			getDriver().manage().window().maximize();
-			report.LOG("User launches longos url");
-			waitABit(4000);
-			
-			getDriver().findElement(By.xpath("//input[@aria-label= 'search-input']")).sendKeys("eggs");waitABit(2000);
-			getDriver().findElement(By.xpath("//button[@type= 'button']")).click();
-			
+		}
+		
+		if (signUpPopUp.isCurrentlyVisible()) {
+			clearSignUpPopUp();	
+			waitABit(2000);
+		}
+		
+		System.out.println(getDriver().getCurrentUrl());
+		System.out.println(getDriver().getTitle());
+		
+		
+//			getDriver().get("https://www.longos.com/");
+//			waitABit(2000);
+//			getDriver().manage().window().maximize();
+//			report.LOG("User launches longos url");
+//			waitABit(4000);
+//			
+//			getDriver().findElement(By.xpath("//input[@aria-label= 'search-input']")).sendKeys("eggs");waitABit(2000);
+//			getDriver().findElement(By.xpath("//button[@type= 'button']")).click();
+//			
 			
 			/*
 			getDriver().findElement(By.xpath("//button[text()=' my account ']")).click(); 
