@@ -44,3 +44,14 @@ Then user add "Partly Skimmed Milk 2% MF" to the cart
 #Then search results are displayed
 
 
+@forgotpassword
+Scenario: To test Add to cart functionality
+Given User launches Loblaws url
+When user searched "milk" in search for product bar
+Then search results are displayed
+Then user add "Partly Skimmed Milk 2% MF" to the cart
+#Then user clicks on sorting dropdown and validate all values in dropdown are displayed
+#Then user selects "Newest to Oldest Products" from dropdown
+#Then search results are displayed
+
+
