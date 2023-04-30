@@ -1,13 +1,9 @@
 package pages;
 
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.List;
-
 import org.junit.Assert;
 import org.openqa.selenium.By;
-
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -104,7 +100,7 @@ public class Product extends PageObject {
 		}
 		waitABit(15000);
 		Assert.assertEquals("1", noOfItemsInCart.getText());
-		report.LOG("No. of product in cart is " + noOfItemsInCart.getText() );
+		report.LOG("No. of product in cart is " + noOfItemsInCart.getText());
 	}
 
 }
