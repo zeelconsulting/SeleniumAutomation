@@ -63,7 +63,9 @@ public class LoginPage extends PageObject{
 		report.LOG("Email address is entered");
 	}
 	
-	public void EnterUsername1() {
+	public void EnterUsername1(String emailaddress) {
+		
+		setEmail1(emailaddress);
 		email.sendKeys(getEmail1());
 		System.out.println(getEmail1());
 		waitABit(1000);

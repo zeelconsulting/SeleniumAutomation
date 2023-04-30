@@ -6,9 +6,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        plugin = {"pretty"},
+        plugin = {"pretty", "json:target/JSONReports/report.json"},
         features = "src/test/resources/features/Register.feature",
-        tags = "@Register",
+        tags = "@TestNavigation",
         glue = "stepdefinitions"
 )
 public class RegisterRunner {}

@@ -1,5 +1,6 @@
 package pages;
 
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -9,6 +10,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Steps;
+import setup.Init;
 import utils.ReportLog;
 
 
@@ -16,23 +18,24 @@ public class HomePage extends PageObject{
 
 	@Steps
 	ReportLog report;
-	
+	Init init;
+
 	@FindBy(xpath= "//button[text()='No thanks']")	
-//	@FindBy(xpath= "//button[@class='modal-dialog__content__close']")
+	//	@FindBy(xpath= "//button[@class='modal-dialog__content__close']")
 	WebElementFacade signUpPopUp;
-	
+
 	@FindBy(xpath= "//button[@class='lds__privacy-policy__btnClose']")
 	WebElementFacade clearCookiesPopUp;
-	
+
 	@FindBy(tagName= "Loblaw Privacy Policy")
 	WebElementFacade PrivacyPolicyText;
-	
+
 	@FindBy(xpath= "//a[@data-auid='account-login-button']")
 	WebElementFacade SignInOnHome;
 
 	@FindBy(xpath= "//button[text()= 'My Account']")
 	WebElementFacade clickmyAccount;
-	
+
 	@FindBy(linkText= "Orders")
 	WebElementFacade MyAccountOrders;
 
@@ -54,10 +57,9 @@ public class HomePage extends PageObject{
 	@FindBy(xpath= "//button[@class= 'styled-dropdown__selected-item-link styled-dropdown__selected-item-link--filter' and @data-sort-code= 'recommended']")
 	WebElementFacade clickSortDropDown;
 
-	//  @FindBy(id= "autocomplete-listbox-desktop-site-header-")
 	@FindBy(xpath= "//input[@data-auid='search-form-input']") 
 	WebElementFacade searchbar;
-	
+
 	@FindBy(xpath= "//button[@title='Submit Search']")
 	WebElementFacade submitSearch;
 
@@ -79,16 +81,20 @@ public class HomePage extends PageObject{
 	// id, name, xpath, css, 
 	//System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
 	//WebDriver driver = new ChromeDriver();
-	
-	
+
+
 	JavascriptExecutor js = (JavascriptExecutor) getDriver();
 
 
 	public void openApplication() {
 
-	open();
-		//	driver.get("https://www.loblaws.ca/");
-		//	System.out.println(driver.getCurrentUrl());
+		
+		getDriver().get(init.getAppUrl());
+	//	getDriver().navigate().to(init.getAppUrl());
+		
+	//	It will open the default url based on the env. mentioned in the serenity
+		//open();
+
 		waitABit(2000);
 		getDriver().manage().window().maximize();
 		report.LOG("User launches Loblaws url");
@@ -97,44 +103,53 @@ public class HomePage extends PageObject{
 			clearCookies();	
 			waitABit(2000);
 		}
-		
+
 		if (signUpPopUp.isCurrentlyVisible()) {
 			clearSignUpPopUp();	
 			waitABit(2000);
 		}
-		
+
 		System.out.println(getDriver().getCurrentUrl());
 		System.out.println(getDriver().getTitle());
 		
+		//getpagesource of the url
+		String p = getDriver().getPageSource();
+	//	System.out.println(p);
 		
-//			getDriver().get("https://www.longos.com/");
-//			waitABit(2000);
-//			getDriver().manage().window().maximize();
-//			report.LOG("User launches longos url");
-//			waitABit(4000);
-//			
-//			getDriver().findElement(By.xpath("//input[@aria-label= 'search-input']")).sendKeys("eggs");waitABit(2000);
-//			getDriver().findElement(By.xpath("//button[@type= 'button']")).click();
-//			
-			
-			/*
+		
+		/*
+		// to test longos url
+
+					getDriver().get("https://www.longos.com/");
+					waitABit(2000);
+					getDriver().manage().window().maximize();
+					report.LOG("User launches longos url");
+					waitABit(4000);
+					System.out.println(getDriver().getCurrentUrl());
+					System.out.println(getDriver().getTitle());
+					
+				//	getDriver().findElement(By.xpath("//input[@aria-label= 'search-input']")).sendKeys("eggs");waitABit(2000);
+				//	getDriver().findElement(By.xpath("//button[@type= 'button']")).click();
+					
+
+		
 			getDriver().findElement(By.xpath("//button[text()=' my account ']")).click(); 
 			getDriver().findElement(By.xpath("//button[text()=' create an account ']")).click();
-			getDriver().findElement(By.id("email")).sendKeys("himanshu_rock@yahoo.com");
-			getDriver().findElement(By.id("firstName")).sendKeys("Ashu"); waitABit(1000);
-			getDriver().findElement(By.id("last-name")).sendKeys("Sharma");waitABit(1000);
+			getDriver().findElement(By.id("email")).sendKeys("himanshu_rock1@yahoo.com");
+			getDriver().findElement(By.id("firstName")).sendKeys("Ashua"); waitABit(1000);
+			getDriver().findElement(By.id("last-name")).sendKeys("Sharmaa");waitABit(1000);
 			getDriver().findElement(By.id("mobile")).sendKeys("4162710463");waitABit(1000);
 			getDriver().findElement(By.id("postalCode")).sendKeys("L5M0Y3");waitABit(1000);
 			getDriver().findElement(By.id("password")).sendKeys("Testing@001");waitABit(1000);
-			getDriver().findElement(By.id("confirmPassword")).sendKeys("Testing@001");waitABit(1000);
-			getDriver().findElement(By.id("tyrNoWishCheck")).click();waitABit(1000);
-			getDriver().findElement(By.id("postalCode")).sendKeys("L5M0Y3");waitABit(1000);
-			getDriver().findElement(By.xpath("//button[text()=' create account ']")).click();waitABit(2000);
-			waitABit(15000);
+			getDriver().findElement(By.id("confirmPassword")).sendKeys("Testing@001");waitABit(3000);
+			getDriver().findElement(By.id("tyrNoWishCheck")).click();waitABit(3000);
+			getDriver().findElement(By.id("postalCode")).sendKeys("L5M0Y3");waitABit(3000);
+			getDriver().findElement(By.xpath("//button[text()=' create account ']")).click();waitABit(5000);
 			
-			*/
+	*/
+		 
 	}
-	
+
 	public void clearSignUpPopUp() {
 		signUpPopUp.click();
 		report.LOG("Sign up popup is clicked");
@@ -151,7 +166,7 @@ public class HomePage extends PageObject{
 		clickmyAccount.click();
 		report.LOG("My account is clicked");
 	}
-	
+
 	public void clearCookies() {
 		clearCookiesPopUp.click();
 		report.LOG("Clear cookies is clicked");
@@ -188,12 +203,12 @@ public class HomePage extends PageObject{
 	}
 
 	public void searchProduct(String product) {
-		
+
 		searchbar.clear();
-	//	searchbar.sendKeys(product);
+		//	searchbar.sendKeys(product);
 		searchbar.typeAndEnter(product);
 		waitABit(1000);
-	//	submitSearch.click();
+		//	submitSearch.click();
 		report.LOG("Product name is entered in the search bar");
 
 	}
@@ -216,7 +231,6 @@ public class HomePage extends PageObject{
 
 	public void selectSortByOption(String SortOption) {
 
-		
 		waitABit(2000);
 		if (SortOption.equalsIgnoreCase(sortByRelevance.getText()))
 		{
@@ -241,7 +255,7 @@ public class HomePage extends PageObject{
 		else if (SortOption.equalsIgnoreCase("Newest to Oldest Products"))
 		{	
 			//js.executeScript("arguments[0].scrollIntoView();", sortByNewToOld);
-		//	js.executeScript("window.scrollBy(0,350)", "");
+			//	js.executeScript("window.scrollBy(0,350)", "");
 			sortByNewToOld.click();
 			report.LOG("Newest to Oldest Products is selected");
 		}
@@ -254,18 +268,18 @@ public class HomePage extends PageObject{
 		clickSortDropDown.click();
 		report.LOG("Sort by dropdown is clicked");
 	}
-	
+
 	public void scrolldown() {
 		getDriver().findElement(By.xpath("//body")).click();
 		getDriver().findElement(By.xpath("//body")).sendKeys(Keys.PAGE_DOWN);
 	}
-	
+
 	public void scrollUp() {
 		getDriver().findElement(By.xpath("//body")).click();
 		getDriver().findElement(By.xpath("//body")).sendKeys(Keys.PAGE_UP);
 	}
-	
-	
+
+
 
 
 }
